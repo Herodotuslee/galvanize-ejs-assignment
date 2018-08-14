@@ -47,7 +47,7 @@ app.post('/', (req, res) => {
 //GET class information and students
 app.get('/class/:class_name',(req,res)=>{
   knex("classes")
-  .join("students",'classes.id','students.class_id')
+  .leftJoin("students",'classes.id','students.class_id')
   .where('classes.classname',req.params.class_name)
   .then((result)=>{
     console.log(result);
