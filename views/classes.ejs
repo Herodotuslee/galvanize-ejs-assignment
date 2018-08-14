@@ -3,20 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+    .scard {
+      border: 1px solid black;
+      display: inline-block;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
   </head>
   <body>
 
 <!-- show class name and the teacher's name -->
-  <div class="">
+  <div class="scard">
         <h3>Class Name : <%=student_list[0].classname %></h3>
         <h3>Teacher Name :<%=student_list[0].teacher %></h3>
     </div>
 
 <!-- show all the student in this class -->
     <% for(let i=0; i < student_list.length;i++){ %>
-  <div class="">
+  <div class="scard">
 
         <h3>Student Name :<%=student_list[i].name %></h3>
+        <form action="/deletestudent/<%=student_list[i].id %>" method="get" style="display:inline-block">
+         <input type="submit" name="" value="Delete">
+       </form>
 
     </div>
     <% } %>
@@ -28,6 +39,7 @@
 
       <input type="submit" value="Submit">
     </form>
+
 
   </body>
 </html>

@@ -3,19 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script type="">
-
-    </script>
+    <style>
+    .card {
+      border: 1px solid black;
+      display: inline-block;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
   </head>
   <body>
     <div class="container">
 
       <% for(let i=0; i < result.length;i++){ %>
-    <div class="">
+    <div class="card">
 
           <h3>Class Name : <%=result[i].classname %></h3>
           <h3>Teacher Name :<%=result[i].teacher %></h3>
           <a href="/class/<%=result[i].classname %>">Infomation </a>
+
+          <form action="/delete/<%= result[i].id  %>" method="get" style="display:inline-block">
+           <input type="submit" name="" value="Delete">
+         </form>
       </div>
       <% } %>
     </div>

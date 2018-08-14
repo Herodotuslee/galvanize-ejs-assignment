@@ -37,6 +37,7 @@ app.post('/', (req, res) => {
   knex('classes').insert({
       classname:req.body.classname,
       teacher:req.body.teacher,
+
     })
     .then(()=>{
       res.redirect('/');
@@ -60,6 +61,21 @@ app.get('/class/:class_name',(req,res)=>{
     console.log(err);
   })
 })
+
+//DELETE Class
+app.get('/delete/:class_id', (req, res) => {
+  knex('classes').where('id', req.params.class_id).del().then(() => {
+    res.redirect('/')
+  })
+})
+
+app.get('/deletestudent/:student_id', (req, res) => {
+  knex('students').where('id', req.params.student_id).del().then(() => {
+    res.redirect('/')
+  })
+})
+
+
 
 // As a user, when I click on a class it takes me to the individual class page.
 // As a user, when I view the class page I should see a list of all students in a
