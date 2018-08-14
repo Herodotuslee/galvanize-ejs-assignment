@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<!-- show class name and the teacher's name -->
+  <div class="">
+        <h3>Class Name : <%=student_list[0].classname %></h3>
+        <h3>Teacher Name :<%=student_list[0].teacher %></h3>
+    </div>
+
+<!-- show all the student in this class -->
+    <% for(let i=0; i < student_list.length;i++){ %>
+  <div class="">
+
+        <h3>Student Name :<%=student_list[i].name %></h3>
+
+    </div>
+    <% } %>
+
+    <form action="/students" method="post">
+      Student name:<br>
+      <input type="text" name="student_name" ><br>
+      <input type="number" name="class_id" value="<%= student_list[0].class_id %>" style='display:none'>
+
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>

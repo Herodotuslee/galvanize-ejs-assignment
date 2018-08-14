@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="">
+
+    </script>
+  </head>
+  <body>
+    <div class="container">
+
+      <% for(let i=0; i < result.length;i++){ %>
+    <div class="">
+
+          <h3>Class Name : <%=result[i].classname %></h3>
+          <h3>Teacher Name :<%=result[i].teacher %></h3>
+          <a href="/class/<%=result[i].classname %>">Infomation </a>
+      </div>
+      <% } %>
+    </div>
+
+    <form action="/" method="post">
+      Class name:<br>
+      <input type="text" name="classname" ><br>
+      Teacher name:<br>
+      <input type="text" name="teacher"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>

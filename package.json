@@ -1,0 +1,26 @@
+{
+  "name": "ejs-assignment",
+  "version": "1.0.0",
+  "description": "We've been working with the gClasses (students/classes) database for a while and it's time to build a full app behind it!",
+  "main": "knexfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gSchool/ejs-assignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gSchool/ejs-assignment/issues"
+  },
+  "homepage": "https://github.com/gSchool/ejs-assignment#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "pg": "^7.4.3"
+  }
+}
