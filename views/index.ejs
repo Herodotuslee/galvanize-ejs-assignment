@@ -15,6 +15,8 @@
   <body>
     <div class="container">
 
+
+<!-- Show all class -->
       <% for(let i=0; i < result.length;i++){ %>
     <div class="card">
 
@@ -22,6 +24,13 @@
           <h3>Teacher Name :<%=result[i].teacher %></h3>
           <a href="/class/<%=result[i].classname %>">Infomation </a>
 
+          <form class='' action="/edit/<%= result[i].id %>" method="post">
+              <input type="text" name="classname" placeholder="Course Name..." value='<%= result[i].classname %>'>
+              <input type="text" name="teacher" placeholder="Instructor Name..." value="<%=result[i].teacher %>">
+              <input type="submit" value="Update">
+          </form>
+
+<!-- DELETE a class -->
           <form action="/delete/<%= result[i].id  %>" method="get" style="display:inline-block">
            <input type="submit" name="" value="Delete">
          </form>

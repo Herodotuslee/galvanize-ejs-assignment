@@ -24,14 +24,24 @@
     <% for(let i=0; i < student_list.length;i++){ %>
   <div class="scard">
 
+        <form class='editForm' action="/edit_student/<%=student_list[i].id %>" method="post" >
+
+           <input type="text" name="name" placeholder="Student Name..." value='<%=student_list[i].name %>'>
+
+           <input type="submit" value="Update">
+         </form>
+
+<!-- DELETE a student -->
         <h3>Student Name :<%=student_list[i].name %></h3>
         <form action="/deletestudent/<%=student_list[i].id %>" method="get" style="display:inline-block">
          <input type="submit" name="" value="Delete">
        </form>
 
+
+
     </div>
     <% } %>
-
+<!-- ADD a student -->
     <form action="/students" method="post">
       Student name:<br>
       <input type="text" name="student_name" ><br>

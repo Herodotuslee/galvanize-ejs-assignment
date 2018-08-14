@@ -12,9 +12,6 @@ app.set('view engine', 'ejs')
 
 
 
-// As a user, when I visit '/' I see a list of all the classes and a form to create
-//  a new class.
-
 // GET all classes
 app.get('/',(req,res)=>{
   knex.select()
@@ -29,8 +26,7 @@ app.get('/',(req,res)=>{
 
 })
 
-// As a user, when I submit the new class form I should see the new class displayed
-// in the list.
+
 
 // POST a class
 app.post('/', (req, res) => {
@@ -48,6 +44,7 @@ app.post('/', (req, res) => {
 
 
 
+//GET class information and students
 app.get('/class/:class_name',(req,res)=>{
   knex("classes")
   .join("students",'classes.id','students.class_id')
@@ -62,13 +59,15 @@ app.get('/class/:class_name',(req,res)=>{
   })
 })
 
-//DELETE Class
+
+//DELETE One Class
 app.get('/delete/:class_id', (req, res) => {
   knex('classes').where('id', req.params.class_id).del().then(() => {
     res.redirect('/')
   })
 })
 
+//DELETE One Student
 app.get('/deletestudent/:student_id', (req, res) => {
   knex('students').where('id', req.params.student_id).del().then(() => {
     res.redirect('/')
@@ -76,20 +75,32 @@ app.get('/deletestudent/:student_id', (req, res) => {
 })
 
 
-
-// As a user, when I click on a class it takes me to the individual class page.
-// As a user, when I view the class page I should see a list of all students in a
-// class and a form to create a new student.
-
 //POST a student
-
 app.post('/students', (req, res) => {
   knex('students').insert({
     name: req.body.student_name,
     class_id: req.body.class_id
   }).then(() => {
     res.redirect('back')
-    // res.redirect('back')
+  })
+})
+
+//UPDATE a Class
+app.post('/edit/:id', (req, res) => {
+  knex('classes').update({
+    classname: req.body.classname,
+    teacher: req.body.teacher
+  }).where('id', req.params.id).then(() => {
+    res.redirect('/')
+  })
+})
+
+//UPDATE a student
+app.post('/edit_student/:id', (req, res) => {
+  knex('students').update({
+    name: req.body.name,
+  }).where('id', req.params.id).then(() => {
+    res.redirect('back')
   })
 })
 
